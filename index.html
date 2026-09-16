@@ -208,7 +208,10 @@
 
   /* CTA cards */
   a.cta{
-    display:block;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:14px;
     position:relative;
     text-decoration:none;
     color:var(--ink);
@@ -218,6 +221,10 @@
     background:var(--surface);
     overflow:hidden;
     transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .cta-body{
+    flex:1 1 auto;
+    min-width:0;
   }
   a.cta:active{ transform:scale(.98); }
   a.cta:hover{ transform:translateY(-2px); border-color:var(--ink-dim); }
@@ -273,12 +280,9 @@
     color:inherit;
     opacity:.7;
     margin:0;
-    max-width:78%;
   }
   .cta-arrow{
-    position:absolute;
-    right:18px;
-    top:18px;
+    flex:0 0 auto;
     width:34px; height:34px;
     border-radius:50%;
     background:var(--ink);
@@ -483,17 +487,21 @@
   <nav class="section-label">Principal</nav>
 
   <a class="cta primary" id="shop-cta" href="https://nolv.com.br" target="_blank" rel="noopener">
-    <p class="cta-eyebrow">Loja oficial</p>
-    <h2 class="cta-title">Ir pro site</h2>
-    <p class="cta-sub">Compre a coleção completa, direto no e-commerce</p>
+    <div class="cta-body">
+      <p class="cta-eyebrow">Loja oficial</p>
+      <h2 class="cta-title">Ir pro site</h2>
+      <p class="cta-sub">Compre a coleção completa, direto no e-commerce</p>
+    </div>
     <span class="cta-arrow" aria-hidden="true">↗</span>
   </a>
 
   <a class="cta" href="https://whatsapp.com/channel/0029VbDH3IGGZNCxqk4rtY0T" target="_blank" rel="noopener">
-    <span class="badge">Grátis</span>
-    <p class="cta-eyebrow">Canal no WhatsApp</p>
-    <h2 class="cta-title">Seja membro</h2>
-    <p class="cta-sub">Acesso antecipado a lançamentos, drops e descontos exclusivos</p>
+    <div class="cta-body">
+      <span class="badge">Grátis</span>
+      <p class="cta-eyebrow">Canal no WhatsApp</p>
+      <h2 class="cta-title">Seja membro</h2>
+      <p class="cta-sub">Acesso antecipado a lançamentos, drops e descontos exclusivos</p>
+    </div>
     <span class="cta-arrow" aria-hidden="true">↗</span>
   </a>
 
