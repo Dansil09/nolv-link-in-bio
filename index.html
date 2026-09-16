@@ -219,7 +219,6 @@
     border-radius:14px;
     padding:22px 22px;
     background:var(--surface);
-    overflow:hidden;
     transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
   }
   .cta-body{
@@ -230,7 +229,14 @@
   a.cta:hover{ transform:translateY(-2px); border-color:var(--ink-dim); }
   a.cta:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
 
-  a.cta::after{
+  .cta-shine{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    border-radius:inherit;
+    pointer-events:none;
+  }
+  .cta-shine::after{
     content:"";
     position:absolute;
     top:0; left:-60%;
@@ -238,9 +244,8 @@
     background:linear-gradient(115deg, transparent, rgba(244,242,236,.16), transparent);
     transform:skewX(-18deg);
     transition:left .6s ease;
-    pointer-events:none;
   }
-  a.cta:hover::after{ left:120%; }
+  a.cta:hover .cta-shine::after{ left:120%; }
 
   a.cta.primary{
     background:var(--paper);
@@ -254,7 +259,7 @@
   a.cta .cta-arrow{ transition:transform .18s ease; }
   a.cta:hover .cta-arrow{ transform:translate(2px,-2px); }
   @media (prefers-reduced-motion: reduce){
-    a.cta::after{ display:none; }
+    .cta-shine{ display:none; }
     a.cta:hover{ transform:none; }
   }
 
@@ -487,6 +492,7 @@
   <nav class="section-label">Principal</nav>
 
   <a class="cta primary" id="shop-cta" href="https://nolv.com.br" target="_blank" rel="noopener">
+    <span class="cta-shine" aria-hidden="true"></span>
     <div class="cta-body">
       <p class="cta-eyebrow">Loja oficial</p>
       <h2 class="cta-title">Ir pro site</h2>
@@ -496,6 +502,7 @@
   </a>
 
   <a class="cta" href="https://whatsapp.com/channel/0029VbDH3IGGZNCxqk4rtY0T" target="_blank" rel="noopener">
+    <span class="cta-shine" aria-hidden="true"></span>
     <div class="cta-body">
       <span class="badge">Grátis</span>
       <p class="cta-eyebrow">Canal no WhatsApp</p>
