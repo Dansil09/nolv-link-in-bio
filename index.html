@@ -120,6 +120,8 @@
 
   /* marquee */
   .marquee{
+    display:flex;
+    align-items:center;
     border:1px solid var(--line);
     background:var(--surface);
     overflow:hidden;
@@ -128,10 +130,11 @@
     border-radius:100px;
   }
   .marquee__track{
-    display:inline-block;
+    display:block;
     padding-left:100%;
     animation:scroll 20s linear infinite;
     font-size:11px;
+    line-height:1;
     font-weight:600;
     letter-spacing:.1em;
     color:var(--ink-dim);
@@ -624,24 +627,21 @@
 
   link.addEventListener('click', function(e){
     if (firing) return;
-    e.preventDefault();
-    firing = true;
     var href = link.href;
     var target = link.target || '_self';
 
     if (reduceMotion){
-      window.open(href, target, 'noopener');
-      firing = false;
       return;
     }
 
+    e.preventDefault();
+    firing = true;
+    window.open(href, target, 'noopener');
+
     launch.classList.add('is-active');
     setTimeout(function(){
-      window.open(href, target, 'noopener');
-      setTimeout(function(){
-        launch.classList.remove('is-active');
-        firing = false;
-      }, 300);
+      launch.classList.remove('is-active');
+      firing = false;
     }, 2400);
   });
 })();
